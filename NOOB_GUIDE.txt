@@ -1,0 +1,52 @@
+===Install:mongoDB and node.js
+	Express http://expressjs.com/en/starter/installing.html
+
+===Starting the app
+1.Open CMD and type "mongod --dbpath PATH_NAME" // Assuming the variable path is set
+2.[optional]Open another CMD(if it doesn't allow multi-tab)
+	Type "mongo", to open the shell and checking the database 
+3.Open another CMD and go to the app workplace directory
+	Type "node SERVER_FILENAME.js" to start the server // SERVER_FILENAME.js is the main index file when npm install
+
+!!!Whenever a .js file has been modified, type "gulp bundle" to trans-compile the files and 
+   then run the server(step 3). npm gulp must be installed and there should be a gulpfile.js
+   that has the code to compile.
+	
+
+===MongoDB:
+Add Path variable of mongodb bin
+
+***cmd: mongod
+For 32-bit(x84) system
+mongod --storageEngine=mmapv1 --dbpath PATH_NAME
+For non-32-bit
+mongod --dbpath PATH_NAME
+
+!!! To shutdown mongod see "cmd:mongo"
+
+***cmd:mongo
+Shell exmple code:
+>function times2(num) { return num * 2; }
+>times2(5);
+10
+>show dbs 
+>db
+>use DB_NAME // switches db
+> record = {
+	"name" : "Blas Toy",
+	"position" : "Programmer"
+	}
+>db.COLLECTION_NAME.insert(record) 
+>db.COLLECTION_NAME.drop() 
+>db.COLLECTION_NAME.find()
+>db.COLLECTION_NAME.find().pretty()
+>show collections
+>exit 
+
+
+!!!To shutdown mongod gracefully
+>use admin // switch to admin
+>db.shutdownServer()
+ELSE if error occured when not shutdown properly
+ Delete mongo.lock
+ CMD: "mongo --repair"
